@@ -1,0 +1,104 @@
+# ====================================
+# Python
+# ====================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ====================================
+# Virtual environments & dependencies
+# ====================================
+.python-version
+poetry.lock          # если используешь poetry
+Pipfile.lock
+uv.lock              # если используешь uv
+
+# ====================================
+# Environment variables (ОЧЕНЬ ВАЖНО!)
+# ====================================
+.env
+.env.*
+!.env.example
+
+# ====================================
+# IDE and editors
+# ====================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ====================================
+# Testing & coverage
+# ====================================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# ====================================
+# Docker
+# ====================================
+.dockerignore
+Dockerfile.*.local
+**/.dockerignore
+
+# Docker volumes (данные БД, Redis и т.д.)
+postgres_data/
+pgdata/
+redis_data/
+volumes/
+data/
+
+# Docker Compose specific
+docker-compose.override.yml
+docker-compose.*.override.yml
+
+# ====================================
+# Logs and temporary files
+# ====================================
+*.log
+logs/
+*.sqlite3
+*.db
+
+# ====================================
+# FastAPI / Alembic specific
+# ====================================
+alembic/versions/   # если не хочешь коммитить миграции (обычно коммитят)
+# alembic.ini       # можно оставить, если он общий
+
+# ====================================
+# Miscellaneous
+# ====================================
+*.tmp
+*.temp

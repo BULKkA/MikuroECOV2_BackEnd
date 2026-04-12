@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python -c \"import requests; token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\\.eyJzdWIiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiZXhwIjoxNzc0NDEzMjk1fQ\\.fXl5f13LPqqkwjiXhpDkL0R807WWy7kmNebWCSR0G64'; headers = \\{'Authorization': f'Bearer \\{token\\}'\\}; data = \\{'title': 'Test Post', 'body': 'This is a test post content', 'slug': 'test-post'\\}; r = requests\\.post\\('http://localhost:8000/api/posts', json=data, headers=headers\\); print\\('Status:', r\\.status_code\\); print\\('Response:', r\\.json\\(\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
