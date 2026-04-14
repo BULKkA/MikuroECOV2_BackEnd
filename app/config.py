@@ -4,6 +4,8 @@ from pydantic import field_validator
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
+        env_file=".env",          # добавь это
+        env_file_encoding="utf-8", # и это
         case_sensitive=False,
         extra="ignore"
     )
@@ -19,13 +21,17 @@ class Settings(BaseSettings):
 
     allowed_mime_types: list[str] = []
 
-    captcha_secret: str
+    captcha_secret: str = ""  # опциональное
 
     @field_validator("allowed_mime_types", mode="before")
     @classmethod
     def parse_mime_types(cls, v):
         if isinstance(v, str):
+            # поддержка обоих форматов: "a,b,c" и ["a","b","c"]
+            if v.startswith("["):
+                import json
+                return json.loads(v)
             return [x.strip() for x in v.split(",")]
         return v
-    
+
 settings = Settings()

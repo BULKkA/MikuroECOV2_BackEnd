@@ -1,51 +1,28 @@
-# ====================================
 # Python
-# ====================================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+
+# Virtual environments
 env/
 venv/
 ENV/
-env.bak/
-venv.bak/
+.venv/
 
-# Distribution / packaging
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# ====================================
-# Virtual environments & dependencies
-# ====================================
-.python-version
-poetry.lock          # если используешь poetry
-Pipfile.lock
-uv.lock              # если используешь uv
-
-# ====================================
-# Environment variables (ОЧЕНЬ ВАЖНО!)
-# ====================================
+# Environment variables
 .env
 .env.*
 !.env.example
 
-# ====================================
-# IDE and editors
-# ====================================
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
 .vscode/
 .idea/
 *.swp
@@ -54,51 +31,35 @@ uv.lock              # если используешь uv
 .DS_Store
 Thumbs.db
 
-# ====================================
 # Testing & coverage
-# ====================================
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
 .mypy_cache/
 .ruff_cache/
-.hypothesis/
 
-# ====================================
+# Locks
+poetry.lock
+Pipfile.lock
+uv.lock
+
 # Docker
-# ====================================
-.dockerignore
-Dockerfile.*.local
-**/.dockerignore
-
-# Docker volumes (данные БД, Redis и т.д.)
+docker-compose.override.yml
 postgres_data/
 pgdata/
 redis_data/
-volumes/
-data/
 
-# Docker Compose specific
-docker-compose.override.yml
-docker-compose.*.override.yml
-
-# ====================================
-# Logs and temporary files
-# ====================================
+# Logs & temp
 *.log
 logs/
 *.sqlite3
 *.db
-
-# ====================================
-# FastAPI / Alembic specific
-# ====================================
-alembic/versions/   # если не хочешь коммитить миграции (обычно коммитят)
-# alembic.ini       # можно оставить, если он общий
-
-# ====================================
-# Miscellaneous
-# ====================================
 *.tmp
 *.temp
+
+# Uploads (медиа файлы)
+uploads/
+
+# Alembic versions (раскомментируй если не хочешь коммитить миграции)
+# alembic/versions/
