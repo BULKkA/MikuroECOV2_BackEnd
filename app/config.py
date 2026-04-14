@@ -1,25 +1,25 @@
-from pydantic_settings import BaseSettings
-from typing import Optional, List
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import List
+
 
 class Settings(BaseSettings):
-    # Database
-    database_url: str = "postgresql://Mikuro_admin_db:Sergosergo666!@localhost:5432/Mikuro_db"
-    
-    # JWT
-    secret_key: str = "your-secret-key-here"
-    algorithm: str = "HS256"
-    access_token_expire_minutes: int = 30
-    refresh_token_expire_days: int = 7
-    
-    # Media
-    media_upload_path: str = "uploads"
-    max_file_size: int = 10 * 1024 * 1024  # 10MB
-    allowed_mime_types: List[str] = ["image/jpeg", "image/png", "image/gif"]
-    
-    # Captcha
-    captcha_secret: str = "captcha-secret"
-    
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=False,
+        extra="ignore"
+    )
+
+    database_url: str
+    secret_key: str
+    algorithm: str
+    access_token_expire_minutes: int
+    refresh_token_expire_days: int
+
+    media_upload_path: str
+    max_file_size: int
+    allowed_mime_types: List[str]
+
+    captcha_secret: str
+
 
 settings = Settings()
