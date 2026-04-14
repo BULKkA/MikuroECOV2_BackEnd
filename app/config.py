@@ -1,11 +1,12 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import field_validator
+from typing import List
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",          # добавь это
-        env_file_encoding="utf-8", # и это
+        env_file=".env",
+        env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore"
     )
@@ -19,19 +20,16 @@ class Settings(BaseSettings):
     media_upload_path: str = "uploads"
     max_file_size: int = 10 * 1024 * 1024
 
-    allowed_mime_types: list[str] = []
+    allowed_mime_types: str = "image/jpeg,image/png,image/gif"  # str, не list
 
-    captcha_secret: str = ""  # опциональное
+    captcha_secret: str = ""
 
-    @field_validator("allowed_mime_types", mode="before")
-    @classmethod
-    def parse_mime_types(cls, v):
-        if isinstance(v, str):
-            # поддержка обоих форматов: "a,b,c" и ["a","b","c"]
-            if v.startswith("["):
-                import json
-                return json.loads(v)
-            return [x.strip() for x in v.split(",")]
-        return v
+    def get_allowed_mime_types(self) -> List[str]:
+        v = self.allowed_mime_types.strip()
+        if v.startswith("["):
+            import json
+            return json.loads(v)
+        return [x.strip() for x in v.split(",") if x.strip()]
+
 
 settings = Settings()

@@ -12,7 +12,7 @@ async def upload_file(
     file: UploadFile = File(...),
     current_user = Depends(check_role("editor"))
 ):
-    if file.content_type not in settings.allowed_mime_types:
+    if file.content_type not in settings.get_allowed_mime_types():
         raise HTTPException(status_code=400, detail="File type not allowed")
     
     if file.size > settings.max_file_size:
