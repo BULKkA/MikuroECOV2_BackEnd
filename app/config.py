@@ -27,3 +27,5 @@ class Settings(BaseSettings):
         if isinstance(v, str):
             return [x.strip() for x in v.split(",")]
         return v
+    
+settings = Settings()
